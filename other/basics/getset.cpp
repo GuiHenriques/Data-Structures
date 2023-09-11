@@ -1,67 +1,72 @@
 #include <iostream>
 #include <memory>
 
-struct Node
+template <typename T>
+void print(T x)
 {
-private:
-    int value;
-    std::shared_ptr<Node> next;
+    std::cout << x << " ";
+}
 
-public:
-    Node(int value) : value(value) {}
+class Node
+{
+    private:
+        int value;
+        Node *next;
 
-    int getValue()
-    {
-        return value;
-    }
+    public:
+        Node(int value) : value(value), next(nullptr) {}
 
-    void setValue(int value)
-    {
-        value = value;
-    }
+        int getValue()
+        {
+            return value;
+        }
 
-    std::shared_ptr<Node> getNext()
-    {
-        return this->next;
-    }
+        void setValue(int value)
+        {
+            this->value = value;
+        }
 
-    void setNext(std::shared_ptr<Node> next)
-    {
-        this->next = next;
-    }
+        Node* getNext()
+        {
+            return this->next;
+        }
+
+        void setNext(Node* next)
+        {
+            this->next = next;
+        }
 };
 
 class List
 {
 private:
-    std::shared_ptr<Node> start = nullptr;
+    Node *start;
 
 public:
-    void insert(int value)
-    {
-        std::shared_ptr<Node> n = std::make_shared<Node>(value);
-        n.setNext() = start;
-        start = n;
-    }
+    List() : start(nullptr) {}
 
-    void display()
-    {
-        std::shared_ptr<Node> trav = start;
+    void insert(int value) {
+        Node *n = new Node(value);
+        n->setNext(start);
+        start = n; 
+    }   
+
+
+    void display() {
+        Node *trav = start;
 
         while (trav != nullptr)
         {
-            std::cout << trav.getValue() << " -> " << std::endl;
-            trav = trav->next;
+            print(trav->getValue());
+            trav = trav->getNext();
         }
     }
-}
+};
 
-int
-main()
+int main()
 {
-    List lista;
-    lista.insert(2);
-    lista.insert(5);
-
-    lista.display();
+    List sll;
+    for (int i = 0; i < 6; i++)
+        sll.insert(i);
+    sll.display();
 }
