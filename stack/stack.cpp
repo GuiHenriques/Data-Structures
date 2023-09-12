@@ -59,34 +59,38 @@ class Stack
                 std::cout << "Pilha vazia." << std::endl;
                 throw std::runtime_error("Pilha vazia.");
             }
-
-            return topo->getValue();
+            int val = topo->getValue();
+            std::cout << val << std::endl;
+            return val;
         }
 
         bool isEmpty() {
             return (topo == nullptr);
         }
 
-        void display() {
+        /* void display() {
             std::shared_ptr<Node> trav = topo;
 
             while (trav != nullptr) {
                 std::cout << trav->getValue() << " -> ";
                 trav = trav->getNext();
             } std::cout << "nullptr" << std::endl;
-
-        }
+        } */
 };
 
 int main()
 {
     Stack pila;
+
+    int topo;
     pila.push(10);
     pila.push(20);
     pila.push(30);
-    pila.display();
+    topo = pila.top();
+    // pila.display();
     
     pila.pop();
     pila.pop();
-    pila.display();
+    topo = pila.top();
+    // pila.display();
 }
