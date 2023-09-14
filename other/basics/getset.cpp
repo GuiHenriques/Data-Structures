@@ -51,7 +51,6 @@ public:
         start = n; 
     }   
 
-
     void display() {
         Node *trav = start;
 
@@ -59,6 +58,18 @@ public:
         {
             print(trav->getValue());
             trav = trav->getNext();
+        }
+    }
+
+    void free() {
+        Node *trav = start;
+        Node *temp;
+
+        while (trav != nullptr)
+        {
+            temp = trav;
+            trav = trav->getNext();
+            delete temp;
         }
     }
 };
@@ -69,4 +80,5 @@ int main()
     for (int i = 0; i < 6; i++)
         sll.insert(i);
     sll.display();
+    sll.free();
 }
