@@ -30,8 +30,9 @@ void remove_last();
 void remove_postion(int);
 void remove_value(int);
 
-void free_list();
 int check_empty();
 void print_list();
+void reverse_list();
+void free_list();
 
 #endif

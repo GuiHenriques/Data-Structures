@@ -9,14 +9,15 @@ int main(void)
     insert_last(3);
     insert_start(1);
     insert_before(2, 7);
-
     print_list();
 
-    remove_first();
     remove_last();
+    insert_last(5);
     print_list();
-    
-    free_list();
 
+    reverse_list();
+    print_list();
+
+    free_list();
     return 0;
 }
